@@ -21,14 +21,14 @@ set(APP_NAME "darlingdle")
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
     src/*.cpp
 )
-
+# criação do executável
+add_executable(${APP_NAME} ${SOURCES})
 # inclução do diretório de cabeçalhos biblioteca internos
 target_include_directories(${APP_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 #inclução do diretório de cabeçalhos da biblioteca externa
 target_include_directories(${APP_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 
-# criação do executável
-add_executable(${APP_NAME} ${SOURCES})
+
 
 # opções de compilação
 target_compile_options(${APP_NAME} PRIVATE

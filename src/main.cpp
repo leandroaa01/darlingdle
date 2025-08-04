@@ -1,7 +1,11 @@
 #include <iostream>
+#include "Frase.hpp"
 
-#define print(x) std::cout << x << "\n";
+
+
 int main() {
-    print("Hello, World!");
+    str path{"data/frases.txt"}; // Cria um objeto ifstream
+
+    Frase Frase(path);           // Passa o objeto ifstream para o construtor
     return 0;
 }

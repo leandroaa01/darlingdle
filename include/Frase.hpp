@@ -8,12 +8,15 @@ struct txt
    str frase{}, autor{}, episodio{};
 };
 
+using info = std::pair<txt, flag>; //!! info sobre a frase e se foi usada ou não
+
 class Frase
 {
 private:
-  vec<txt> m_frases{};
+  vec<info> m_frases{};
+  size_type m_qtd{0};
 
-  txt separado_de_conteudo(const str& linha) {
+  txt set_frases(const str& linha) {
     size_t fimFrase = linha.rfind('"'); // posição do último aspas
     size_t iniFrase = linha.find('"');  // posição do primeiro aspas
 
@@ -32,36 +35,13 @@ private:
     return c;
 }
 public:
-    Frase(str path);
-    ~Frase() = default;
+  Frase(str path);
+  ~Frase() = default;
+  Frase& operator=(const Frase& other) = default;
+  txt embalhador();
+  size_type qtd() const { return m_qtd;}
+  vec<info> get_frases() const { return m_frases; }
 };
 
-Frase::Frase(str path)
-{
-    std::ifstream arquivo(path);
-    if (!arquivo.is_open()) { // Verifica se o arquivo foi aberto com sucesso
-        std::cerr << "Erro ao abrir o arquivo.\n";
-        return;
-    }
-    std::string linha;
-
-    // Ignorar as duas primeiras linhas
-    std::getline(arquivo, linha);
-    std::getline(arquivo, linha);
-
-
-
-    while (std::getline(arquivo, linha)) {
-        if (!linha.empty()) {
-            txt c = separado_de_conteudo(linha);
-            m_frases.push_back(c);
-        }
-    }
-
-    // Exemplo de exibição
-    for (const auto& f : m_frases) {
-        std::cout << "Frase: " << f.frase << "\nAutor: " << f.autor << "\nEpisódio: " << f.episodio << "\n---\n";
-    }
-}
 
 #endif  //<! FRASE_HPP

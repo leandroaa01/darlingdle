@@ -27,7 +27,7 @@ BraceWrapping:
   SplitEmptyRecord: true
   SplitEmptyNamespace: true
 BreakConstructorInitializers: BeforeComma
-ColumnLimit: 100
+ColumnLimit: 150
 ConstructorInitializerAllOnOneLineOrOnePerLine: true
 ConstructorInitializerIndentWidth: 0
 SpaceInEmptyBlock: true

@@ -18,3 +18,4 @@ using str = std::string;
 using strtream =  std::stringstream;
 using flag = bool;
 using size_type = std::size_t;
+using byte = std::uint8_t;
